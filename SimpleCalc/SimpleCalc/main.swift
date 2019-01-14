@@ -10,6 +10,35 @@ import Foundation
 
 public class Calculator {
     public func calculate(_ args: [String]) -> Int {
+        var result = 0
+        if args[1] == "+" {
+            result = args[0] + args[2]
+        }
+        else if args[1] == "-" {
+            result = args[0] - args[2]
+        }
+        else if args[1] == "/" {
+            result = args[0] / args[2]
+        }
+        else if args[1] == "*" {
+            result = args[0] * args[2]
+        }
+        else if args[1] == "%" {
+            if args[2] > args[0] {
+                result = args[0]
+            }
+            else if args[2] = args[0] {
+                result = 0
+            }
+            else {
+                var base = args[2]
+                while base < args[0] {
+                    base += args[2]
+                }
+                result = base - args[0]
+            }
+        }
+        return result
     }
     
     public func calculate(_ arg: String) -> Int {
