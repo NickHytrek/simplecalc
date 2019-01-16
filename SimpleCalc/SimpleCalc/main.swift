@@ -11,7 +11,33 @@ import Foundation
 public class Calculator {
     public func calculate(_ args: [String]) -> Int {
         var result = 0
-        if args[1] == "+" {
+        if args[args.count - 1] == "count" {
+            result = args.count - 1
+        }
+        else if args[args.count - 1] == "avg" {
+            if args.count - 1 == 0 {
+                result = 0
+            }
+            else {
+                var i = 0
+                var sum = 0
+                while i < args.count - 1 {
+                    sum = sum + args[i]
+                    i = i + 1
+                }
+                result = sum / i
+            }
+
+        }
+        else if args[args.count - 1] == "fact" {
+            var i = 1
+            var total = 1
+            while i <= args[0] {
+                total = total * i
+            }
+            result = total
+        }
+        else if args[1] == "+" {
             result = args[0] + args[2]
         }
         else if args[1] == "-" {
