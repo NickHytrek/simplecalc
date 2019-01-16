@@ -22,7 +22,8 @@ public class Calculator {
                 var i = 0
                 var sum = 0
                 while i < args.count - 1 {
-                    sum = sum + args[i]
+                    let arg = (args[i] as NSString).integerValue
+                    sum = sum + arg
                     i = i + 1
                 }
                 result = sum / i
@@ -32,38 +33,45 @@ public class Calculator {
         else if args[args.count - 1] == "fact" {
             var i = 1
             var total = 1
-            while i <= args[0] {
+            let count = (args[i] as NSString).integerValue
+            while i <= count {
                 total = total * i
+                i = i + 1
             }
             result = total
         }
-        else if args[1] == "+" {
-            result = args[0] + args[2]
-        }
-        else if args[1] == "-" {
-            result = args[0] - args[2]
-        }
-        else if args[1] == "/" {
-            result = args[0] / args[2]
-        }
-        else if args[1] == "*" {
-            result = args[0] * args[2]
-        }
-        else if args[1] == "%" {
-            if args[2] > args[0] {
-                result = args[0]
+        else {
+            let firstNum = (args[0] as NSString).integerValue
+            let secondNum = (args[2] as NSString).integerValue
+            if args[1] == "+" {
+                result = firstNum + secondNum
             }
-            else if args[2] = args[0] {
-                result = 0
+            else if args[1] == "-" {
+                result = firstNum - secondNum
             }
-            else {
-                var base = args[2]
-                while base < args[0] {
-                    base += args[2]
+            else if args[1] == "/" {
+                result = firstNum / secondNum
+            }
+            else if args[1] == "*" {
+                result = firstNum * secondNum
+            }
+            else if args[1] == "%" {
+                if secondNum > firstNum {
+                    result = firstNum
                 }
-                result = base - args[0]
+                else if secondNum == firstNum {
+                    result = 0
+                }
+                else {
+                    var base = secondNum
+                    while base < firstNum {
+                        base += secondNum
+                    }
+                    result = base - firstNum
+                }
             }
         }
+        
         return result
     }
     
