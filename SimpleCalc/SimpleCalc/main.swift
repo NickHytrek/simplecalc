@@ -31,14 +31,20 @@ public class Calculator {
 
         }
         else if args[args.count - 1] == "fact" {
-            var i = 1
-            var total = 1
-            let count = (args[i] as NSString).integerValue
-            while i <= count {
-                total = total * i
-                i = i + 1
+            if (args.count == 1) {
+                result = 0
             }
-            result = total
+            else {
+                var i = 1
+                var total = 1
+                let count = (args[i - 1] as NSString).integerValue
+                while i <= count {
+                    total = total * i
+                    i = i + 1
+                }
+                result = total
+            }
+
         }
         else {
             let firstNum = (args[0] as NSString).integerValue
